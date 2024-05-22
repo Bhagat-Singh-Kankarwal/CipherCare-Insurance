@@ -1,0 +1,64 @@
+{% extends 'site/base.html' %}
+
+{% block content %}
+
+    
+
+
+<div class="page_container">
+
+    
+    
+    <div class="form_container">
+        
+        <div class="form_heading">
+            <h1>Login</h1>
+    
+        </div>
+
+
+        <div class="mt-5">
+            
+            <form action="" method="POST">
+                {% csrf_token %} 
+            
+            
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Username</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" name="username" placeholder="">
+                    
+                </div>
+            
+                <div class="mb-1 password-field">
+                    <label for="exampleInputPassword1" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" name="password" placeholder="">
+                    <i class="fa-solid fa-eye" id="toggle-password"></i> 
+                </div>
+            
+
+                    
+                <a href="{% url 'reset_password' %}" style="float: right; text-decoration: none;">Forgot Password?</a>
+                
+                <br><br>
+            
+                <input type="submit" class="btn" value="Submit">
+        
+            </form>
+
+        </div>
+
+        <div class="mt-2">
+            Don't have an account? <a href="{% url 'register_user' %}" >Register here</a>
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+
+{% endblock %}

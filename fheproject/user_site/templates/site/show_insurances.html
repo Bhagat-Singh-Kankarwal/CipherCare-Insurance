@@ -1,0 +1,278 @@
+{% extends 'site/base.html' %}
+
+
+{% block content %}
+
+{% if user.is_authenticated %}
+
+<div class="decrypted_cards mt-4 mb-4">
+
+
+    {% for insurance in insurances %}
+        
+            <div class="card" style="min-width: 35vw; box-shadow: 0 0 7px 3px rgba(0, 0, 0, 0.378);">
+                <div class="card-header" style="border-bottom: 1px solid #afafaf;">
+                    {{ insurance }}
+                </div>
+
+                        <table class="table" style="margin-bottom: 0;">
+                            <tbody>
+
+
+                              <tr>
+                                <td align="right" class="align-top">First Name:</td>
+
+                                <td style="padding-left: 0; padding-right: 0; padding-bottom: 0; padding-top: 0;" class="align-bottom">
+                                
+                                    <div class="vr" style="min-height: 25px;" class="align-top"></div>
+                                
+                                </td>
+                                
+                                <td align="left" class="align-middle">{{ insurance.first_name }}</td>
+                              </tr>
+
+                              <tr>
+                                <td align="right" class="align-top">Last Name:</td>
+
+                                <td style="padding-left: 0; padding-right: 0; padding-bottom: 0; padding-top: 0;" class="align-bottom">
+                                
+                                    <div class="vr" style="min-height: 25px;" class="align-top"></div>
+                                
+                                </td>
+                                
+                                <td align="left" class="align-middle">{{ insurance.last_name }}</td>
+                              </tr>
+
+                              <tr>
+                                <td align="right" class="align-top">Date of Birth:</td>
+
+                                <td style="padding-left: 0; padding-right: 0; padding-bottom: 0; padding-top: 0;" class="align-bottom">
+                                
+                                    <div class="vr" style="min-height: 25px;" class="align-top"></div>
+                                
+                                </td>
+                                
+                                <td align="left" class="align-middle">{{ insurance.date_of_birth }}</td>
+                              </tr>
+
+                              <tr>
+                                <td align="right" class="align-top">Address:</td>
+
+                                <td style="padding-left: 0; padding-right: 0; padding-bottom: 0; padding-top: 0;" class="align-bottom">
+                                
+                                    <div class="vr" style="min-height: 25px;" class="align-top"></div>
+                                
+                                </td>
+                                
+                                <td align="left" class="align-middle">{{ insurance.address }}</td>
+                              </tr>
+
+                              <tr>
+                                <td align="right" class="align-top">City:</td>
+
+                                <td style="padding-left: 0; padding-right: 0; padding-bottom: 0; padding-top: 0;" class="align-bottom">
+                                
+                                    <div class="vr" style="min-height: 25px;" class="align-top"></div>
+                                
+                                </td>
+                                
+                                <td align="left" class="align-middle">{{ insurance.city }}</td>
+                              </tr>
+
+                              <tr>
+                                <td align="right" class="align-top">State:</td>
+
+                                <td style="padding-left: 0; padding-right: 0; padding-bottom: 0; padding-top: 0;" class="align-bottom">
+                                
+                                    <div class="vr" style="min-height: 25px;" class="align-top"></div>
+                                
+                                </td>
+                                
+                                <td align="left" class="align-middle">{{ insurance.state }}</td>
+                              </tr>
+
+                              <tr>
+                                <td align="right" class="align-top">Zip Code:</td>
+
+                                <td style="padding-left: 0; padding-right: 0; padding-bottom: 0; padding-top: 0;" class="align-bottom">
+                                
+                                    <div class="vr" style="min-height: 25px;" class="align-top"></div>
+                                
+                                </td>
+                                
+                                <td align="left" class="align-middle">{{ insurance.zip_code }}</td>
+                              </tr>
+
+                              <tr>
+                                <td align="right" class="align-top">Phone Number:</td>
+
+                                <td style="padding-left: 0; padding-right: 0; padding-bottom: 0; padding-top: 0;" class="align-bottom">
+                                
+                                    <div class="vr" style="min-height: 25px;" class="align-top"></div>
+                                
+                                </td>
+                                
+                                <td align="left" class="align-middle">{{ insurance.phone_number }}</td>
+                              </tr>
+
+                              <tr>
+                                <td align="right" class="align-top">Email:</td>
+
+                                <td style="padding-left: 0; padding-right: 0; padding-bottom: 0; padding-top: 0;" class="align-bottom">
+                                
+                                    <div class="vr" style="min-height: 25px;" class="align-top"></div>
+                                
+                                </td>
+                                
+                                <td align="left" class="align-middle">{{ insurance.email }}</td>
+                              </tr>
+
+                              <tr>
+                                <td align="right" class="align-top">Gender:</td>
+
+                                <td style="padding-left: 0; padding-right: 0; padding-bottom: 0; padding-top: 0;" class="align-bottom">
+                                
+                                    <div class="vr" style="min-height: 25px;" class="align-top"></div>
+                                
+                                </td>
+                                
+                                <td align="left" class="align-middle">{{ insurance.gender }}</td>
+                              </tr>
+
+
+                              {% if insurance.height == None and insurance.weight == None and insurance.insurance_type == 'auto' %}
+                                <tr>
+                                  <td align="right" class="align-top">Driving License:</td>
+                                  <td style="padding-left: 0; padding-right: 0; padding-bottom: 0; padding-top: 0;" class="align-bottom">
+                                  
+                                      <div class="vr" style="min-height: 25px;" class="align-top"></div>
+                                  
+                                  </td>
+                                  
+                                  <td align="left" class="align-middle">{{ insurance.dl_no }}</td>
+                                </tr>
+
+                                <tr>
+                                  <td align="right" class="align-top">License Plate:</td>
+
+                                  <td style="padding-left: 0; padding-right: 0; padding-bottom: 0; padding-top: 0;" class="align-bottom">
+                                  
+                                      <div class="vr" style="min-height: 25px;" class="align-top"></div>
+                                  
+                                  </td>
+                                  
+                                  <td align="left" class="align-middle">{{ insurance.license_plate }}</td>
+                                </tr>
+                                
+                              {% else %}
+                                <tr>
+                                  <td align="right" class="align-top">Height:</td>
+
+                                  <td style="padding-left: 0; padding-right: 0; padding-bottom: 0; padding-top: 0;" class="align-bottom">
+                                  
+                                      <div class="vr" style="min-height: 25px;" class="align-top"></div>
+                                  
+                                  </td>
+                                  
+                                  <td align="left" class="align-middle">{{ insurance.height }} cms</td>
+                                </tr>
+
+                                <tr>
+                                  <td align="right" class="align-top">Weight:</td>
+
+                                  <td style="padding-left: 0; padding-right: 0; padding-bottom: 0; padding-top: 0;" class="align-bottom">
+                                  
+                                      <div class="vr" style="min-height: 25px;" class="align-top"></div>
+                                  
+                                  </td>
+                                  
+                                  <td align="left" class="align-middle">{{ insurance.weight }} kgs</td>
+                                </tr>
+                              {% endif %}
+
+                              <tr>
+                                <td align="right" class="align-top">Insurance Type:</td>
+
+                                <td style="padding-left: 0; padding-right: 0; padding-bottom: 0; padding-top: 0;" class="align-bottom">
+                                
+                                    <div class="vr" style="min-height: 25px;" class="align-top"></div>
+                                
+                                </td>
+                                
+                                <td align="left" class="align-middle">{{ insurance.insurance_type }}</td>
+                              </tr>
+
+                              <tr>
+                                <td align="right" class="align-top">Coverage Amount:</td>
+
+                                <td style="padding-left: 0; padding-right: 0; padding-bottom: 0; padding-top: 0;" class="align-bottom">
+                                
+                                    <div class="vr" style="min-height: 25px;" class="align-top"></div>
+                                
+                                </td>
+                                
+                                <td align="left" class="align-middle">{{ insurance.coverage_amount }}</td>
+                              </tr>
+
+                              <tr>
+                                <td align="right" class="align-top">Start Date:</td>
+
+                                <td style="padding-left: 0; padding-right: 0; padding-bottom: 0; padding-top: 0;" class="align-bottom">
+                                
+                                    <div class="vr" style="min-height: 25px;" class="align-top"></div>
+                                
+                                </td>
+                                
+                                <td align="left" class="align-middle">{{ insurance.start_date }}</td>
+                              </tr>
+
+                              <tr>
+                                <td align="right" class="align-top">End Date:</td>
+
+                                <td style="padding-left: 0; padding-right: 0; padding-bottom: 0; padding-top: 0;" class="align-bottom">
+                                
+                                    <div class="vr" style="min-height: 25px;" class="align-top"></div>
+                                
+                                </td>
+                                
+                                <td align="left" class="align-middle">{{ insurance.end_date }}</td>
+                              </tr>
+
+
+
+                            </tbody>
+                        </table>
+
+                {% if insurance.approved %}
+
+                    <div class="card-footer" style="background-color: var(--bs-success-bg-subtle);">                    
+                        Approved
+                    </div>
+                {% else %}
+                    <div class="card-footer" style="background-color: var(--bs-warning-bg-subtle);">                    
+                        Approval Pending
+                    </div>
+
+                {% endif %}
+                
+                    
+            </div>
+
+
+
+    {% endfor %}
+    
+    
+</div>
+
+{% else %}
+
+    <h2>You must be logged in to access this page...</h2>
+
+    <a href="{% url 'login' %}">Login Here</a>
+
+
+    
+{% endif %}
+
+{% endblock %}

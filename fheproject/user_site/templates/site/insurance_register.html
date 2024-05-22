@@ -1,0 +1,411 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CipherCare Insurance</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    
+
+    <link rel="icon" href="{% static 'img/icon.ico' %}">
+
+    <link rel="stylesheet" href="{% static 'css/temp_css.css' %}">
+    </head>
+
+    <body>
+
+        <div class="body-container-blur">
+
+        {% include 'site/navbar.html' %}
+      
+        <br>
+  
+        <div class="container">
+    
+            {% if messages %}
+            {% for message in messages %}
+    
+                <div class="alert alert-warning alert-dismissible fade show" role="alert" style="font-weight: bolder;">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+            {% endif %}
+
+            {% if request.method == 'POST' and form.errors %}
+
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <!-- {{ form.errors }} -->
+                    
+                    {% for field, errors in form.errors.items %}
+                        {% if field == 'username' %}
+                            <h6 style="margin-bottom: 0; font-weight: bolder;">Username Error:</h6>
+                            {% for error in errors %}
+                                {{ error }} <br>
+                            {% endfor %}
+                        {% endif %}
+
+                        {% if field == 'password2' or field == 'password1' %}
+                            <h6 style="margin-bottom: 0; font-weight: bolder;">Password Error:</h6>
+                                {% for error in errors %}
+                                    {{ error }} <br>
+                                {% endfor %}
+                        {% endif %}
+
+                        {% if field == 'email' %}
+                            <h6 style="margin-bottom: 0; font-weight: bolder;">Email Error:</h6>
+                                {% for error in errors %}
+                                    {{ error }} <br>
+                                {% endfor %}
+                        {% endif %}
+                    {% endfor %}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endif %}
+
+
+            {% if user.is_authenticated %}
+            
+                <div class="page_container">
+
+                    <div class="form_container mb-5 mt-4">
+
+                      
+
+                        <div class="form_heading">
+                            <h1>Insurance Registration</h1>
+                        </div>
+
+
+                        <div class="form-outer">
+                            
+                            <form action="{% url 'insurance_register' %}" method="post" enctype="multipart/form-data">
+
+                                {% csrf_token %}
+
+                                <div class="page slide-page">
+                                    <div class="title">
+                                        Personal Info:
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="first_name" class="form-label">First Name:</label>
+                                        <input type="text" name="first_name" class="form-control" maxlength="255" required id="first_name">
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label for="last_name" class="form-label">Last Name:</label>
+                                        <input type="text" name="last_name" class="form-control" maxlength="255" required id="last_name">
+                                        
+                                    </div>
+                    
+                                    <div class="mb-3">
+                                        <label for="date_of_birth" class="form-label">Date of Birth:</label>
+                                        <input type="date" name="date_of_birth" class="form-control" style="border-bottom: 2px solid #b3d4dd;" required id="date_of_birth" min="1960-01-01" max="2000-12-31">
+                                        
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="address" class="form-label">Address:</label>
+                                        <input type="text" name="address" class="form-control" maxlength="255" required id="address">
+                                        
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="city" class="form-label">City:</label>
+                                        <input type="text" name="city" class="form-control" maxlength="255" required id="city">
+                                        
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="state" class="form-label">State:</label>
+                                        <input type="text" name="state" class="form-control" maxlength="255" required id="state">
+                                        
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="zip_code" class="form-label">Zip code:</label>
+                                        <input type="tel" name="zip_code" class="form-control" style="border-bottom: 2px solid #b3d4dd;" required id="zip_code" pattern="[0-9]{6}" data-bs-toggle="tooltip" data-bs-html="true" data-bs-placement="right" title="Enter 6 digit zip code">
+                                        
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="phone_number" class="form-label">Phone number:</label>
+                                        <input type="tel" name="phone_number" class="form-control" style="border-bottom: 2px solid #b3d4dd;" required id="phone_number" pattern="[0-9]{10}" data-bs-toggle="tooltip" data-bs-html="true" data-bs-placement="right" title="Enter 10 digit mobile number">
+                                    </div>
+
+                                    <div class="mb-5">
+                                        <label for="email" class="form-label">Email:</label>
+                                        <input type="email" name="email" class="form-control" style="border-bottom: 2px solid #b3d4dd;" maxlength="254" required id="email">
+                                        
+                                    </div>
+                    
+
+                                    <button class="form-control firstNext next">Next</button>
+                                    
+                                </div>
+
+
+                                <div class="page page-two">
+
+                                    <div class="title">
+                                        Insurance Info:
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="gender" class="form-label">Gender:</label>
+                                            <select name="gender" required id="gender" class="form-control" style="border-bottom: 2px solid #b3d4dd;">
+                                                <option value="" selected>---------</option>
+
+                                                <option value="male">Male</option>
+
+                                                <option value="female">Female</option>
+
+                                                <option value="other">Other</option>
+
+                                            </select>
+                                    </div>                     
+
+                                    <div class="mb-3">
+                                        <label for="insurance_type" class="form-label">Insurance type:</label>
+                                        <select name="insurance_type" class="form-control" style="border-bottom: 2px solid #b3d4dd;" required id="insurance_type">
+                                            <option value="" selected>---------</option>
+                                        
+                                            <option value="health">Health Insurance</option>
+                                        
+                                            <option value="auto">Auto Insurance</option>
+                                        
+                                        </select>
+                                        
+                                    </div>
+
+
+                                    <div id="health-data" style="display: none;">
+
+                                        <div class="mb-3">
+                                            <label for="height" class="form-label">Height:</label>
+                                            <input type="number" name="height" id="height" class="form-control" style="border-bottom: 2px solid #b3d4dd;" placeholder="in cms" max="272" min="0" value="0">
+                                        </div>
+    
+                                        <div class="mb-3">
+                                            <label for="weight" class="form-label">Weight:</label>
+                                            <input type="number" name="weight" id="weight" class="form-control" style="border-bottom: 2px solid #b3d4dd;" placeholder="in kgs" max="635" min="0" value="0">
+                                        </div>
+
+                                    </div>
+
+                                    <div id="auto-data" style="display: none;">
+
+                                        <div class="mb-3">
+                                            <label for="dl_no" class="form-label">Driving License Number:</label>
+                                            <input type="text" name="dl_no" id="dl_no" class="form-control" style="border-bottom: 2px solid #b3d4dd;" value="None" pattern="^([A-Z]{2}[0-9]{2})((19|20)[0-9][0-9])[0-9]{7}$" title="Example: AB1220201234567" data-bs-toggle="tooltip" data-bs-html="true" data-bs-placement="right">
+                                        </div>
+    
+                                        <div class="mb-3">
+                                            <label for="license_plate" class="form-label">License Plate Number:</label>
+                                            <input type="text" name="license_plate" id="license_plate" class="form-control" style="border-bottom: 2px solid #b3d4dd;" value="None" pattern="^[A-Z]{2}[0-9]{2}[A-Z]{1,3}[0-9]{4}$" title="Example: AB01CAD1029" data-bs-toggle="tooltip" data-bs-html="true" data-bs-placement="right">
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="mb-3">
+                                        <label for="coverage_amount" class="form-label">Coverage amount:</label>
+                                        <input type="number" name="coverage_amount" class="form-control" style="border-bottom: 2px solid #b3d4dd;" step="1" required id="coverage_amount" min="100000" max="10000000">
+                                        
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="start_date" class="form-label">Start date:</label>
+                                        <input type="date" name="start_date" class="form-control" style="border-bottom: 2px solid #b3d4dd;" required id="start_date" min="{{ date_t|date:'Y-m-d' }}" max="2070-12-31">
+                                        
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="end_date" class="form-label">End date:</label>
+                                        <input type="date" name="end_date" class="form-control" style="border-bottom: 2px solid #b3d4dd;" id="end_date"
+                                        min="{{ date_t|date:'Y-m-d' }}" max="2070-12-31">
+                                        
+                                    </div>
+
+                                    <div class="generate-key" id="generate-key">
+                                        <a href="#" id="gen-key-link"> <!--we have to prevent default behaviour-->
+                                            Generate Key
+                                        </a>
+                                    </div>
+
+                                    <div class="mb-4" id="upload-file" style="display: none;">
+                                        <label for="secret_key_file">Upload Secret Key:</label>
+                                        <input type="file" name="secret_key_file" required id="secret_key_file">
+                                        
+                                    </div>
+                                    
+
+                                    <div class="field btns">
+                                        <button class="form-control prev-3 prev">Previous</button>
+                                        <button class="form-control submit" type="submit" value="submit">Submit</button>
+                                    </div>
+                                </div>
+
+
+
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+
+            {% else %}
+
+                
+                <div class="page_container">
+
+                    <div class="form_container">
+
+                        
+
+                        <h2 style="border-bottom: 2px solid #b3d4dd; padding-bottom: 1rem;">You must be logged in to access this page...</h2>
+                        
+
+                        <a href="{% url 'login' %}">Login Here</a>
+                    </div>
+                </div>
+     
+            {% endif %}
+
+        </div>
+
+        </div>
+
+        
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous" defer></script>
+
+        <script>
+            const fname = document.getElementById("first_name")
+            const insType = document.getElementById('insurance_type')
+            const genLink = document.getElementById('gen-key-link')
+
+            genLink.addEventListener('click', function(event) {
+                event.preventDefault() // preventing the default behaviour
+                const inputValue = fname.value
+                const secondInput = insType.value
+
+                const output = inputValue + " " + secondInput
+
+                const url = new URL("{% url 'gen_key' %}", window.location.origin)
+                url.searchParams.set('rest', output)
+                window.location.href = url.toString()
+            })
+        </script>
+
+
+        <script>
+            $(function(){
+              $('[data-bs-toggle="tooltip"]').tooltip({
+                html: true,
+                
+              });
+            });
+      
+         </script>
+
+        <script>
+            // Code for upload and generate
+
+            const genButton = document.getElementById('gen-key-link')
+            const upButton = document.getElementById('upload-file')
+
+            genButton.addEventListener('click', function(){
+                genButton.style.display = "none"
+                upButton.style.display = 'block'
+            })
+            
+        </script>
+
+        <script>
+
+            // Logic for different fields
+            const typeInsurance = document.getElementById('insurance_type')
+            const healthData = document.getElementById('health-data')
+            const autoData = document.getElementById('auto-data')
+
+
+            
+            const dlPattern = "^([A-Z]{2}[0-9]{2})((19|20)[0-9][0-9])[0-9]{7}$"
+            const licensePattern = "^[A-Z]{2}[0-9]{2}[A-Z]{1,3}[0-9]{4}$"
+            
+            const remove_dl_no = document.getElementById('dl_no')
+            const remove_license_plate = document.getElementById('license_plate')
+            
+            typeInsurance.addEventListener('change', function() {
+                const selectedOption = this.value
+                
+                
+                if (selectedOption == 'health'){
+                    healthData.style.display = 'block'
+                    autoData.style.display = 'none'
+                    
+
+                    remove_dl_no.removeAttribute('pattern')
+                    remove_license_plate.removeAttribute('pattern')
+                    
+                }
+                else if (selectedOption == 'auto'){
+                    autoData.style.display = 'block'
+                    healthData.style.display = 'none'
+                    
+
+                    remove_dl_no.pattern = dlPattern
+                    remove_license_plate.pattern = licensePattern
+
+                }
+                else {
+                    autoData.style.display = 'none'
+                    healthData.style.display = 'none'
+                }
+
+            })
+
+
+            // Code for multi-step form
+            const slidePage = document.querySelector(".slide-page");
+            const formOuter = document.querySelector(".form-outer");
+            const pageTwo = document.querySelector(".page-two");
+            const nextBtnFirst = document.querySelector(".firstNext");
+            
+            const prevBtnFourth = document.querySelector(".prev-3");
+            const submitBtn = document.querySelector(".submit");
+            
+            let current = 1;
+
+            nextBtnFirst.addEventListener("click", function(event){
+                event.preventDefault();
+                slidePage.style.marginLeft = "-100%";
+                pageTwo.style.width = "50%";
+                slidePage.style.height = "50vh";
+                current += 1;
+            });
+
+            submitBtn.addEventListener("click", function(){
+                current += 1;
+            });
+            
+            prevBtnFourth.addEventListener("click", function(event){
+                event.preventDefault();
+                slidePage.style.marginLeft = "0%";
+                pageTwo.style.width = "100%";
+                slidePage.style.height = "auto";
+                current -= 1;
+            });
+
+
+
+
+        </script>
+
+
+    </body>
+</html>

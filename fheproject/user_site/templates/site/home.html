@@ -1,0 +1,81 @@
+{% extends 'site/base.html' %}
+
+
+{% block content %}
+
+
+<div class="d-flex align-items-start flex-column justify-content-center" style="height:80vh; position: relative;">
+    
+    <h1 class="welcome-header" style="font-family: 'Quicksand'; font-size: 4rem;">Welcome {{ user.first_name }},</h1>
+
+    
+    <div>
+        <blockquote class="blockquote">
+            
+            {% if not user.is_superuser %}
+                <p style="font-family: 'Roboto Serif';">Let us help you choose the best insurance plan for you...</p>
+            {% else %}
+                <p style="font-family: 'Roboto Serif';">Approve pending insurances here...</p>   
+            {% endif %}
+        </blockquote>
+
+
+        {% if user.is_authenticated and not user.is_superuser %}
+
+            <div class="buttons">
+
+                <a href="{% url 'insurance_register' %}" class="button-links">
+                        Register Insurance               
+                </a>
+        
+        
+                <a href="{% url 'insurance_list' user.username %}" class="button-links">
+                        My Insurances
+                </a>
+
+            </div>
+        
+        {% elif user.is_superuser %}
+
+            <div class="buttons">
+
+                <a href="{% url 'admin_approval' %}" class="button-links">
+                        Approve
+                </a>
+        
+            </div>
+
+        {% endif %}
+
+    </div>
+
+
+</div>
+
+
+{% if not user.is_authenticated %}
+
+    <div style="position: absolute; right: 10rem; top: 14rem; text-align: justify;">
+
+        <div class="alert alert-dismissible fade show glass" role="alert" style="font-weight: bolder;">
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+
+            <h3 style="font-size: larger; margin: 0 0; padding: 0 0; font-weight: bold;">Leveraging Fully Homomorphic Encryption for Enhanced Privacy in Insurance Sector</h3>
+            <br>
+            <p style="font-size: medium; font-family: 'Roboto Serif'; font-weight: lighter !important;">
+                Welcome to our innovative project utilizing Fully Homomorphic Encryption (FHE) to safeguard insurance details. 
+                <br><br>Our encryption technology ensures that 
+                sensitive user information remains confidential, allowing only the user to access full 
+                details of the form. 
+                <br><br>Companies are granted access to limited, non-sensitive data such as 
+                usernames and basic information, mitigating the risk of data breaches and protecting user 
+                privacy while still facilitating efficient business operations.
+            </p>
+        </div>
+        
+    </div>
+
+{% endif %}
+
+
+{% endblock %}

@@ -1,0 +1,46 @@
+{% load static %}
+
+<nav class="navbar navbar-expand-lg navbar-light d-none d-lg-block pt-4 px-4">
+    <div class="container-fluid">
+      <span style="transform:translateX(-10px) ;">
+        <img src="{% static 'img/logo.png' %}" width="40" height="38" class="d-inline-block">
+      </span>
+
+      <a class="navbar-brand" href="{% url 'home' %}" style="font-size: 2rem;">
+        CipherCare
+      </a>
+      
+      
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="font-size: 1.2rem;">
+         
+          
+        </ul>
+
+        <ul class="navbar-nav list-inline" style="font-size: 1.2em;">
+
+          {% if user.is_authenticated %}
+            <li class="nav-item" id="log-link">
+              <a class="nav-link link-body-emphasis" href="{% url 'logout' %}">Logout</a>
+            </li>
+
+          {% else %}
+
+            <li class="nav-item" id="log-link">
+              <a class="nav-link link-body-emphasis" href="{% url 'register_user' %}">Register</a>
+            </li>
+
+            <div class="vr"></div>
+
+            <li class="nav-item" id="log-link">
+              <a class="nav-link link-body-emphasis" href="{% url 'login' %}">Login</a>
+            </li>
+          
+          {% endif %}
+
+          
+        </ul>
+        
+      </div>
+    </div>
+  </nav>

@@ -1,0 +1,216 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@200;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&display=swap');
+
+
+body{
+    background-image: url(../img/w3.png);
+    background-repeat: no-repeat !important;
+
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+
+    font-family: 'Quicksand', sans-serif;
+
+    
+}
+
+::selection{
+    color: #0D0A58;
+    background: #b3d4dd;
+}
+
+
+nav{
+    margin-left: 5rem;
+    margin-right: 5rem;
+
+    font-weight: bolder;
+}
+
+.navbar-brand{
+    font-weight: bold;
+
+}
+
+
+.welcome-header{
+    font-weight: bold;
+}
+
+#log-link a::before {
+    content: '' !important;
+    display: block !important;
+    height: 3px !important;
+    background-color: #444 !important;
+  
+    position: relative !important;
+    top: calc(35px) !important;
+    width: 0% !important;
+  
+    transition: all ease-in-out 100ms !important;
+}
+  
+#log-link a:hover::before {
+    width: calc(100%) !important;
+}
+
+#log-link a:hover {
+    color: #000  !important;
+}
+
+.navbar-nav .vr{
+    width: 1px !important;
+    opacity: 50% !important;
+}
+
+
+.buttons {
+    display: flex;
+    justify-content:flex-start;
+
+    margin-top: 2rem;
+    gap: 1rem;
+
+    width: 90%;
+}
+
+.button-links{
+    border: 2px solid #444444;
+
+    padding: 0.3rem 0.5rem;
+
+    color: #444;
+
+    text-decoration: none;
+    font-weight: bolder;
+
+    
+    
+    transition: all ease-in-out 200ms ;
+}
+
+.button-links:hover{
+
+    background-color: #444444;
+    color: white;
+}
+
+
+/* tooltip */
+.tooltip-inner {
+    text-align: left;
+    max-width: 500px; 
+}
+
+
+
+/* login.html */
+
+.page_container {
+    display: flex;
+    
+    align-items: center;
+    justify-content: center;
+    
+    flex-direction: column;
+    
+    min-height: 70vh;
+    
+}
+
+.form_container{
+    background-color: white;
+
+    padding: 2rem 3rem;
+    box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.192);
+
+    min-width: 40vw !important;
+}
+
+
+.form_heading{
+    margin: 0 0;
+    padding: 0 0;
+}
+
+.form_heading::before {
+    content: '' ;
+    display: block ;
+    height: 2px ;
+    background-color: #b3d4dd;
+  
+    position: relative ;
+    top: calc(4em) ;
+    width: 100% ;
+
+}
+
+.form_container .btn{
+    background-color: #b3d4dd;
+    width: 100%;
+
+    border-radius: 0;
+
+    transition: all ease-in-out 200ms ;
+}
+
+.form_container .btn:hover{
+    box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.4);
+}
+
+.form_container input[type=text], input[type=password] {
+    border-bottom: 2px solid #b3d4dd !important;
+}
+
+#id_secret_key_file {
+    padding: 10px 20px;
+
+}
+
+#id_secret_key_file::file-selector-button {
+    font: inherit;
+    border: none;
+    background-color: #b3d4dd;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+
+.decrypted_cards{
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem; 
+    justify-content:space-evenly;
+
+}
+
+.password-field {
+    position: relative;
+}
+
+#toggle-password, #toggle-password2 {
+    opacity: 0.8;
+    position: absolute;
+    top: 60%;
+    right: 0.9rem;
+    cursor: pointer;
+}
+
+.glass{
+    background: rgba( 255, 255, 255, 0.5 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 10.5px );
+    -webkit-backdrop-filter: blur( 10.5px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+
+    margin-bottom: 0 !important;
+    width: 400px !important;
+}
+
+.glass p{
+    margin: 0 0;
+}

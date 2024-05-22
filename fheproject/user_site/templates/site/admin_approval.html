@@ -1,0 +1,78 @@
+{% extends 'site/base.html' %}
+
+{% block content %}
+
+<div class="page_container">
+
+    <div class="form_container mb-4">
+
+        <div class="form_heading">
+            <h1>Admin Approval Panel </h1>
+        </div>
+
+        <div class="mt-5">
+
+
+            <form action="" method="post">
+                {% csrf_token %}
+
+
+
+
+                <table class="table table-bordered table-hover">
+                    <thead class="table-light">
+                        <tr>
+                            <th scope="col">Event</th>
+                            <th scope="col">Approved</th>
+                        </tr>
+                    </thead>
+                    
+                    <tbody class="">
+                        {% for insurance in insurance_list %}
+                        <tr>
+                            <td>{{ insurance }}</td>
+
+                            <td>
+                                {% if insurance.approved %}
+                                    <div class="form-check">
+
+                                        <input type="checkbox" class="form-check-input" checked="checked" value="{{insurance.id}}" name="boxes">
+
+                                    </div>
+                                
+                                {% else %}
+                                    <div class="form-check">
+
+                                        <input type="checkbox" class="form-check-input" value="{{insurance.id}}" name="boxes">
+
+                                    </div>
+                                    
+                                
+                                {% endif %}
+                            </td>
+                        </tr>
+
+
+                        {% endfor %}
+
+                    </tbody>
+                </table>
+                
+                <button class="btn mt-5" type="submit">Update Approval</button>
+
+
+            </form>
+                
+        </div>
+    
+    </div>
+
+</div>
+
+
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,107 @@
+{% extends 'site/base.html' %}
+
+{% block content %}
+
+
+{% if request.method == 'POST' and form.errors %}
+
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+   
+    {% for field, errors in form.errors.items %}
+        {% if field == 'username' %}
+            <h6 style="margin-bottom: 0; font-weight: bolder;">Username Error:</h6>
+            {% for error in errors %}
+                {{ error }} <br>
+            {% endfor %}
+        {% endif %}
+
+        {% if field == 'password2' or field == 'password1' %}
+            <h6 style="margin-bottom: 0; font-weight: bolder;">Password Error:</h6>
+                {% for error in errors %}
+                    {{ error }} <br>
+                {% endfor %}
+        {% endif %}
+
+        {% if field == 'email' %}
+            <h6 style="margin-bottom: 0; font-weight: bolder;">Email Error:</h6>
+                {% for error in errors %}
+                    {{ error }} <br>
+                {% endfor %}
+        {% endif %}
+    {% endfor %}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endif %}
+
+
+<div class="page_container">
+
+    <div class="form_container mb-4">
+
+        <div class="form_heading">
+            <h1>Register</h1>
+        </div>
+            
+        
+        <div class="mt-5">
+            
+            <form action="{% url 'register_user' %}" method="POST">
+                <!-- for security purposes -->
+                {% csrf_token %}
+
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Username</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" name="username" placeholder=""
+                    data-bs-toggle="tooltip" data-bs-html="true" data-bs-placement="right" title="Letters, digits and @/./+/-/_ only.">
+                </div>
+                
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">First Name</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" name="first_name" placeholder="">
+                    
+                </div>
+
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Last Name</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" name="last_name" placeholder="">
+                    
+                </div>
+
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Email</label>
+                    <input type="text" class="form-control email_input" id="exampleInputEmail1" name="email" placeholder=""
+                    style="border-bottom: 2px solid #b3d4dd;">
+                    
+                </div>
+            
+                <div class="mb-3 password-field">
+                    <label for="exampleInputPassword1" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" name="password1" placeholder="" data-bs-toggle="tooltip" data-bs-html="true" data-bs-placement="right" title="Your password can’t be too similar to your other personal information.<br>
+                    Your password must contain at least 8 characters.<br>
+                    Your password can’t be a commonly used password.<br>
+                    Your password can’t be entirely numeric.">
+                    <i class="fa-solid fa-eye" id="toggle-password"></i> 
+                </div>
+
+                <div class="mb-1 password-field">
+                    <label for="exampleInputPassword2" class="form-label">Confirm Password</label>
+                    <input type="password" class="form-control" id="exampleInputPassword2" name="password2" placeholder="">
+                    <i class="fa-solid fa-eye" id="toggle-password2"></i> 
+                </div>
+            
+            
+                <br>
+            
+                <input type="submit" class="btn" value="Submit">
+            
+            
+            </form>
+
+        </div>
+
+    </div>
+
+</div>    
+
+
+{% endblock %}

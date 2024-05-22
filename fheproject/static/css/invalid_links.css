@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@200;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&display=swap');
+
+
+body{
+    background-image: url(../img/w2.jpg);
+
+    margin: 0 0;
+
+    background-size: cover;
+    background-position: center;
+
+    font-family: 'Quicksand';
+    
+}
+
+.body-container-blur{
+
+    height: 100vh;
+
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 200px );
+}
+
+.container{
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    
+    margin-left: 6rem;
+
+}
+
+
+h1{
+    margin: 0 0;
+    padding: 0 0;
+}
+
+p{
+    font-family: 'Roboto Serif';
+}

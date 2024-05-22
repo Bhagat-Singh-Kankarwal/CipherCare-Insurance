@@ -1,0 +1,58 @@
+{% extends 'site/base.html' %}
+
+{% block content %}
+
+<div class="page_container">
+
+    <div class="form_container mb-4">
+
+        <div class="form_heading">
+            <h1>Enter new password</h1>
+        </div>
+
+
+        <div class="mt-5">
+            <p>
+                Please enter your new password twice so we can verify you typed it in correctly.
+            </p>
+            <br>
+            
+            
+            <form action="" method="POST">
+                <!-- for security purposes -->
+                {% csrf_token %} 
+
+                <div class="mb-3">
+                    <label for="id_new_password1" class="form-label">New Password</label>
+
+                    <input type="password" name="new_password1" autocomplete="new-password" required="" id="id_new_password1" class="form-control" data-bs-toggle="tooltip" data-bs-html="true" data-bs-placement="right" title="Your password can’t be too similar to your other personal information.<br>
+                    Your password must contain at least 8 characters.<br>
+                    Your password can’t be a commonly used password.<br>
+                    Your password can’t be entirely numeric.">
+                </div>
+
+                <div class="mb-1">
+                    <label for="id_new_password2" class="form-label">New Password Confirmation</label>
+
+                    <input type="password" name="new_password2" autocomplete="new-password" required="" id="id_new_password2" class="form-control">
+                </div>
+                
+            
+                <input type="submit" class="btn mt-5" value="Submit">
+
+
+        </div>
+    </div>
+</div>
+
+
+</form>
+    
+
+
+
+
+
+
+
+{% endblock %}

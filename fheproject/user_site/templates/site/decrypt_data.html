@@ -1,0 +1,32 @@
+{% extends 'site/base.html' %}
+
+
+{% block content %}
+
+
+<div class="page_container">
+
+    <div class="form_container mb-4 mt-5">
+
+        <div class="form_heading">
+
+            <h1>Decrypt Insurance Data</h1>
+
+        </div>
+
+        <div class="mt-5">
+
+            <form method="post" enctype="multipart/form-data" action="{% url 'decrypt_and_view' user.username %}">
+                {% csrf_token %}
+                {{ form.as_p }}
+        
+                
+                <button type="submit" class="btn mt-4">Decrypt and View Data</button>
+            </form>
+
+        </div>
+
+
+
+
+{% endblock %}
