@@ -1,0 +1,11 @@
+asgiref==3.7.2
+Django==5.0.3
+django-environ==0.11.2
+django-registration-redux==2.13
+numpy==1.26.4
+python-dotenv==1.0.1
+six==1.16.0
+sqlparse==0.4.4
+tenseal==0.3.14
+typing_extensions==4.10.0
+tzdata==2024.1
