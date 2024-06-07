@@ -32,7 +32,9 @@ Clone the project
 In the root directory
 
 ```bash
+  python -m venv virt
   virt\Scripts\activate
+  pip install -r requirements.txt
 ```
 
 Go to the project directory
